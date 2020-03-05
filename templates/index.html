@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block index %}
+
+    <h2 class="h5 text-center mb-5">Свободны прямо сейчас</h2>
+    {% for o in range(6) %}
+    <div class="row">
+      <div class="col-12 col-lg-10 offset-lg-1 m-auto">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-3"><img src="{{ teacher[random[o]]['picture'] }}" class="img-fluid" alt=""></div>
+              <div class="col-9">
+                <p class="float-right">Рейтинг: {{teacher[random[o]]['rating']}} Ставка: {{teacher[random[o]]['price']}} / час</p>
+                <h2 class="h4">{{ teacher[random[o]]['name'] }}</h2>
+                <p>{{teacher[random[o]]['about']}}</p>
+                <a href="/profiles/{{random[o]|int}}" class="btn btn-outline-primary btn-sm mr-3 mb-2">Показать информаци и расписание</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>{% endfor %}
+{% endblock %}

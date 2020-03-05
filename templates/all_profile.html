@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block all_profile %}
+
+    <h2 class="h5 text-center mb-5">Свободны прямо сейчас</h2>
+    {% for i in range(12) %}
+    <div class="row">
+      <div class="col-12 col-lg-10 offset-lg-1 m-auto">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-3"><img src="{{ teacher[i]['picture'] }}" class="img-fluid" alt=""></div>
+              <div class="col-9">
+                <p class="float-right">Рейтинг: {{teacher[i]['rating']}} Ставка: {{teacher[i]['price']}} / час</p>
+                <h2 class="h4">{{ teacher[i]['name'] }}</h2>
+                <p>{{teacher[i]['about']}}</p>
+                <a href="/profiles/{{i|int}}" class="btn btn-outline-primary btn-sm mr-3 mb-2">Показать информаци и расписание</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>{% endfor %}
+{% endblock %}
