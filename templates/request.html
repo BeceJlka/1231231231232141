@@ -1,7 +1,9 @@
+{% extends 'base.html' %}
 
+{% block request %}
   <main class="container mt-5">
     <div class="col-12 col-sm-10 col-lg-6 offset-lg-3 offset-sm-1">
-      <form action="request_done.html" class="card mb-5">
+      <form action="/request_done/" class="card mb-5" method="post">
         <div class="card-body text-center pt-5">
           <h1 class="h3 card-title mt-4 mb-2">Подбор преподавателя</h1>
           <p class="px-5">Напишите, чего вам нужно и&nbsp;мы&nbsp;подберем отличных&nbsp;ребят</p>
@@ -68,11 +70,12 @@
         <hr>
         <div class="card-body mx-3">
           <label class="mb-1 mt-2">Вас зовут</label>
-          <input class="form-control" type="text" placeholder="username">
+          <input class="form-control" type="text" name="clientName" id="clientName">
           <label class="mb-1 mt-2">Ваш телефон</label>
-          <input class="form-control" type="text" placeholder="usertelephone">
+          <input class="form-control" type="tel"  name="clientPhone" id="clientPhone">
           <input type="submit" class="btn btn-primary mt-4 mb-2" value="Найдите мне преподавателя">
         </div>
       </form>
     </div>
   </main>
+{% endblock %}

@@ -4,7 +4,7 @@ goals = {
     "work": "Для работы",
     "relocate": "Для переезда"
 }
-
+days = {"mon":"Понедельник","tue":"Вторник","wed":"Среда","thu":"Четверг","fri":"Пятница","sat":"Суббота","sun":"Воскресенье"}
 teachers = [
     {
         "id": 0,
@@ -20,7 +20,7 @@ teachers = [
         ],
         "free": {
             "mon": {
-                "8:00": True,
+                "8:00": False,
                 "10:00": False,
                 "12:00": False,
                 "14:00": False,
@@ -34,7 +34,7 @@ teachers = [
                 "10:00": False,
                 "12:00": False,
                 "14:00": False,
-                "16:00": False,
+                "16:00": True,
                 "18:00": False,
                 "20:00": False,
                 "22:00": False
@@ -42,8 +42,8 @@ teachers = [
             "wed": {
                 "8:00": True,
                 "10:00": False,
-                "12:00": False,
-                "14:00": False,
+                "12:00": True,
+                "14:00": True,
                 "16:00": False,
                 "18:00": False,
                 "20:00": False,
@@ -56,8 +56,8 @@ teachers = [
                 "14:00": False,
                 "16:00": False,
                 "18:00": False,
-                "20:00": False,
-                "22:00": False
+                "20:00": True,
+                "22:00": True
             },
             "fri": {
                 "8:00": True,
