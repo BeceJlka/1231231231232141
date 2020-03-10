@@ -21,7 +21,7 @@ def main():
 
 @app.route('/goals/<goal>/')
 def render_goals(goal):
-    return render_template('goal.html', goal=goal, goals=goals)
+    return render_template('goal.html', goal=goal, goals1=goals, teachers=teachers)
 
 @app.route('/all_profiles/')
 def render_all_profile():
@@ -55,7 +55,7 @@ def render_request_done():
 
 @app.route('/booking/<int:id>/<day>/<time>/')
 def rander_booking(id, day, time):
-    return render_template('booking.html',teacher=teachers, id=id, day = day, time = time, days = days)
+    return render_template('booking.html', teacher=teachers, id=id, day=day, time=time, days = days)
 
 
 @app.route('/booking_done/', methods=["POST"])
