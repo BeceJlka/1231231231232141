@@ -11,8 +11,8 @@
             <section class="teacher=info">
 
               <h1 class="h2">{{ teacher[id]['name'] }}</h1>
-              <p><span class="badge badge-secondary mr-2">{% for a in teacher[id]['goals'] %} {{teacher[id]['goals'][a|int]}}{% endfor %}
-              </span>Рейтинг: {{ teacher[id]['rating'] }} Ставка: {{ teacher[id]['price'] }} / час</p>
+              <p>{% for a in teacher[id].goals %}<span class="badge badge-secondary mr-2">{{ goals[a] }}
+              </span>{% endfor %}Рейтинг: {{ teacher[id]['rating'] }} Ставка: {{ teacher[id]['price'] }} / час</p>
               <p>{{ teacher[id]['about'] }}</p>
 
             </section>
@@ -20,28 +20,17 @@
             <section class="available">
 
               <h4 class="mb-4 mt-5">Записаться на пробный урок</h4>
-
-              <h6 class="mt-4">Понедельник</h6>
-              <a href="#" class="btn btn-outline-success mr-2">12:00 свободно</a>
-              <a href="#" class="btn btn-outline-success  mr-2">14:00 свободно</a>
-
-              <h6 class="mt-4">Вторник</h6>
-              <a href="#" class="btn btn-outline-success  mr-2">14:00 свободно</a>
-              <a href="#" class="btn btn-outline-success  mr-2">16:00 свободно</a>
-
-              <h6 class="mt-4">Среда</h6>
-              <a href="#" class="btn btn-outline-success  mr-2">14:00 свободно</a>
-              <a href="#" class="btn btn-outline-success  mr-2">16:00 свободно</a>
-              <a href="#" class="btn btn-outline-success  mr-2">18:00 свободно</a>
-
-              <h6 class="mt-4">Четверг</h6>
-
-              <p>Нет свободных уроков</p>
-
-              <h6 class="mt-4">Пятница</h6>
-              <a href="#" class="btn btn-outline-success  mr-2">14:00 свободно</a>
-              <a href="#" class="btn btn-outline-success  mr-2">16:00 свободно</a>
-              <a href="#" class="btn btn-outline-success  mr-2">18:00 свободно</a>
+              {% for weekday, daily_schedule in teacher[id].free.items() %}
+                <h6 class="mt-4">{{ days[weekday] }}</h6>
+                {% if True in daily_schedule.values() %}
+                    {% for time, is_free in daily_schedule.items() %}
+                      {% if is_free %}
+                      <a href="/booking/{{ id }}/{{ weekday }}/{{ time }}" class="btn btn-outline-success mr-2">{{ time }} свободно</a>{% endif %}
+                    {% endfor%}
+                {% else %}
+                    <p>Нет свободных уроков</p>
+                {% endif %}
+              {% endfor %}
 
             </section>
 
