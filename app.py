@@ -21,7 +21,7 @@ def main():
 
 @app.route('/goals/<goal>/')
 def render_goals(goal):
-    return render_template('goal.html')
+    return render_template('goal.html', goal=goal, goals=goals)
 
 @app.route('/all_profiles/')
 def render_all_profile():
