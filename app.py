@@ -15,13 +15,17 @@ def main():
     for i in range(6):
         a = random.randint(1, 11)
         random_teacher.append(a)
-    pprint.pprint(teachers)
     return render_template('index.html',teacher = teachers, random = random_teacher)
 
 
 @app.route('/goals/<goal>/')
 def render_goals(goal):
-    return render_template('goal.html', goal=goal, goals1=goals, teachers=teachers)
+    teachers_fit_for_goal = []
+    for teacher in teachers:
+        if goal in teacher['goals']:
+            teachers_fit_for_goal.append(teacher)
+    print(teachers_fit_for_goal)
+    return render_template('goal.html', goal=goal, goals=goals, teachers_fit_for_goal=teachers_fit_for_goal, id=id)
 
 @app.route('/all_profiles/')
 def render_all_profile():
@@ -72,8 +76,8 @@ def rander_booking_done():
                'clientPhone': request.form['clientPhone']}
     with open('booking.json', "w") as f_write:
         json.dump(booking,f_write)
-    print(booking)
-    return render_template('booking_done.html', username=username, phone=phone, day=day, time=time, days=days, teacher=teachers, id=int(cteacher))
+    return render_template('booking_done.html', username=username, phone=phone, day=day, time=time, days=days,
+                           teacher=teachers, id=int(cteacher))
 
 
 app.run()
