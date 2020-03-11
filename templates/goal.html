@@ -4,19 +4,20 @@
   <main class="container mt-3">
     <h1 class="h1 text-center w-50 mx-auto mt-1 py-5 mb-4"><strong>🤝<br />Преподаватели <br> {{ goals[goal] }}</strong></h1>
       <div class="row">
-      <div class="col-12 col-lg-10 offset-lg-1 m-auto">{% for i in teachers_fit_for_goal %}
+      <div class="col-12 col-lg-10 offset-lg-1 m-auto">{% for item in teachers_fit_for_goal %}
         <div class="card mb-4">
           <div class="card-body">
             <div class="row">
-              <div class="col-3"><img src="{{ teachers_fit_for_goal[i|int].picture}}" class="img-fluid" alt=""></div>
+              <div class="col-3"><img src="{{ item.picture}}" class="img-fluid" alt=""></div>
               <div class="col-9">
-                <p class="float-right">Рейтинг:{{ teachers_fit_for_goal[i|int].rating }} Ставка: {{ teachers_fit_for_goal[i|int].price }} / час</p>
-                <h2 class="h4">{{ teachers_fit_for_goal[i|int].name }}</h2>
-                <p>{{ teachers_fit_for_goal[i|int].about }}</p>
-                <a href="/profiles/{{i|int}}/" class="btn btn-outline-primary btn-sm mr-3 mb-2">Показать информаци и расписание</a>
+                <p class="float-right">Рейтинг:{{ item.rating }} Ставка: {{ item.price }} / час</p>
+                <h2 class="h4">{{ item.name }}</h2>
+                <p>{{ item.about }}</p>
+                <a href="/profiles/{{ item.id }}/" class="btn btn-outline-primary btn-sm mr-3 mb-2">Показать информаци и расписание</a>
               </div>
             </div>
           </div>
-        </div>
-      {% endfor %}
+        </div>{% endfor %}
+      </div>
+      </div>
 {% endblock %}

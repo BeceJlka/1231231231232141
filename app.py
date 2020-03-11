@@ -24,12 +24,14 @@ def render_goals(goal):
     for teacher in teachers:
         if goal in teacher['goals']:
             teachers_fit_for_goal.append(teacher)
-    print(teachers_fit_for_goal)
-    return render_template('goal.html', goal=goal, goals=goals, teachers_fit_for_goal=teachers_fit_for_goal, id=id)
+    return render_template('goal.html',
+                           goal=goal,
+                           goals=goals,
+                           teachers_fit_for_goal=sorted(teachers_fit_for_goal, key=lambda item: item['rating'], reverse=True))
 
 @app.route('/all_profiles/')
 def render_all_profile():
-    return render_template('all_profile.html',teacher = teachers)
+    return render_template('all_profile.html', teacher=teachers)
 
 
 @app.route('/profiles/<int:id>/')
