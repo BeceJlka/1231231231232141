@@ -81,5 +81,6 @@ def rander_booking_done():
     return render_template('booking_done.html', username=username, phone=phone, day=day, time=time, days=days,
                            teacher=teachers, id=int(cteacher))
 
+if __name__ == '__main__':
+    app.run(port=8000,debug=False)
 
-app.run()
